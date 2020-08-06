@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="styles.css" />
+    <title>Weight Converter</title>    
+</head>
+<body>
+  <div class="container">
+    <div class="container-primary">
+      Weight Converter App
+    </div>
+    <div class="container-secondary">
+      <input type="text" class="input-field" placeholder="Enter weight quantity" />
+      <select name="units" class="select-list">
+        <option name="Kilogramme(kg)" class="select-option">Kilogramme(kg)</option>
+        <option name="Pounds(lb)" class="select-option">Pounds(lb)</option>
+        <option name="Ounces(oz)" class="select-option">Ounces(oz)</option>
+        <option name="Gram(g)" class="select-option">Gram(g)</option>
+      </select>
+    </div>
+     <div class="container-secondary">
+        <button class="btn">Convert<img src="http://icon-park.com/imagefiles/loading7_white.gif" class="img-convert"></button>
+     </div>
+     <div class="container-secondary">
+       <div class="container-secondary container-secondary--grey" id="Pounds(lb)">
+        Pounds: 0 
+       </div>
+       <div class="container-secondary container-secondary--grey" id="Kilogramme(kg)">
+        Kilogramme: 0    
+       </div>
+       <div class="container-secondary container-secondary--grey" id="Gram(g)">
+        Gram: 0   
+       </div>
+       <div class="container-secondary container-secondary--grey" id="Ounces(oz)">
+        Ounces: 0   
+       </div>
+       <button class="btn" id="reset">Reset</button>
+     </div>
+  </div>
+<script src="app.js"></script>
+</body>
+</html>

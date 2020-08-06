@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    const inputField = document.querySelector(".input-field");
+const selectInput = document.querySelector(".select-list");
+const selectOptions = document.querySelectorAll(".select-option");
+const checkbox = document.querySelectorAll(".checkbox-field");
+const result = document.querySelector(".container-secondary");
+const results = document.querySelectorAll(".container-secondary--grey");
+const btn = document.querySelector(".btn");
+
+loadEventListeners();
+
+function loadEventListeners() {
+  document.addEventListener("DOMContentLoaded", (e) => {
+    hideElements();
+    disableCheckbox();
+  });
+  
+  selectInput.addEventListener("click", (e) => {
+    disableCheckbox();
+  });
+
+  btn.addEventListener("click", (e) => {
+    convertFromKg();
+
+    document.querySelector(".img-convert").style.display = "inline";
+
+    setTimeout(function() {
+      document.querySelector(".img-convert").remove();
+    }, 4000);
+
+    setInterval(function() {
+      result.nextElementSibling.nextElementSibling.style.display = "block";;
+    }, 4000);
+
+    selectOptions.forEach((optionItem) => {
+      if(optionItem.selected) {
+        results.forEach((resultEl) => {
+          if(optionItem.value === resultEl.id) {
+            resultEl.style.display = "none";   
+          } else {
+            resultEl.style.display =  "block";
+          }
+               
+        });
+      }
+    });
+  });
+
+}
+
+function hideElements() {
+ document.querySelector(".img-convert").style.display = "none";
+ result.nextElementSibling.nextElementSibling.style.display = "none";
+}
+
+function disableCheckbox () {
+  selectOptions.forEach(function(optionItem) {
+    if(optionItem.selected) {
+      checkbox.forEach(function(fieldValue) {
+        if(fieldValue.value === optionItem.value) {
+          fieldValue.disabled = true;
+        } else {
+          fieldValue.disabled = false;
+          fieldValue.checked = false;
+        }
+      });
+    }      
+  });
+
+}
+
+function convertFromKg() {
+  const pounds = inputField.value * 2.2046;
+  const ounces = inputField.value * 35.274;
+  const gram = inputField.value * 1000;
+
+
+  results.forEach((resultEl) => {
+    if(resultEl.id === "Pounds(lb)") {
+      resultEl.textContent = `Pounds: ${pounds}`;
+    } else if(resultEl.id === "Gram(g)") {
+      resultEl.textContent = `Gram: ${gram}`;
+    } else if(resultEl.id === "Ounces(oz)") {
+      resultEl.textContent = `Ounces: ${ounces}`;
+    }
+  });
+
+}
+
+
+
+  </script>
+</body>
+</html>
